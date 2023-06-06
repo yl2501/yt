@@ -1161,7 +1161,7 @@ def Halpha_Emissivity(field,data):
        table[i,:]=[float(l.split()[-1]) for l in open(patt%(i+1)) if l[0] != "#"]
    sp=interpolate.RectBivariateSpline(hden,T,table)
    good=data["temperature"].shape
-   H_N=numpy.log10(numpy.array(data["gas","number_density"]))*3.0/7.0 #convert to H_NumberDensity
+   H_N=numpy.log10(numpy.array(data["gas","number_density"])*3.0/7.0) #convert to H_NumberDensity # fixed bug thanks to Kung-Yi
    Temperature=numpy.log10(numpy.array(data["temperature"]))
    H_N=H_N.reshape(H_N.size)
    Temperature=Temperature.reshape(Temperature.size)
